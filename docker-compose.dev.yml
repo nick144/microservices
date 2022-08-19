@@ -1,0 +1,68 @@
+version: '3.5'
+services:
+  react:
+    # stdin_open: true # docker run -i
+    # tty: true        # docker run -t
+    build:
+      context: ./react-app/
+    volumes:
+      - ./react-app:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    command: npm start
+
+  # angular:
+  #   # stdin_open: true # docker run -i
+  #   # tty: true        # docker run -t
+  #   build:
+  #     context: ./angular-app
+  #   volumes:
+  #     - ./angular-app:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3000
+  #   command: npm start
+    
+  mongo:
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: coldcold
+
+  user:
+    build:
+      context: ./users-node
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./users-node:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=root
+      - MONGO_PASSWORD=coldcold
+      - SESSION_SECRET=secret
+      - TOKEN_SECRET=jwtsecret
+    command: npm run dev
+  
+  post:
+    build:
+      context: ./posts-node
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./posts-node:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=root
+      - MONGO_PASSWORD=coldcold
+      - SESSION_SECRET=secret
+      - TOKEN_SECRET=jwtsecret
+    command: npm run dev
+  
+  nginx:
+    ports:
+      - "80:80"

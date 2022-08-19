@@ -1,0 +1,83 @@
+version: '3.5'
+services:
+  react:
+    # stdin_open: true # docker run -i
+    # tty: true        # docker run -t
+    container_name: react
+    build: ./react-app/
+    environment:
+      - PORT=3000
+    networks:
+      - node_docker
+  
+  # angular:
+  #   # stdin_open: true # docker run -i
+  #   # tty: true        # docker run -t
+  #   container_name: angular
+  #   build: ./angular-app/
+  #   environment:
+  #     - PORT=4200
+  #   networks:
+  #     - node_docker
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: coldcold
+    volumes:
+      - mongo-db:/data/db
+    networks:
+      - node_docker
+  
+  user:
+    container_name: user
+    build: ./users-node
+    environment:
+      - PORT=8000
+    depends_on:
+      - mongo
+    networks:
+      - node_docker
+
+  post:
+    container_name: post
+    build: ./posts-node
+    environment:
+      - PORT=8001
+    depends_on:
+      - mongo
+    networks:
+      - node_docker
+
+  nginx:
+    container_name: nginx
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - NGINX_PORT=80
+    command: [nginx-debug, '-g', 'daemon off;']
+    depends_on:
+      - post
+      - user
+      - react
+    networks:
+      - node_docker
+
+  redis:
+    container_name: redis
+    image: redis
+    networks:
+      - node_docker
+    
+volumes:
+  mongo-db:
+
+networks:
+  node_docker: 
+    driver: bridge
+    name: node_docker
