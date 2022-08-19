@@ -12,7 +12,7 @@ function Signup() {
 
   // const [error, setError ] = useState();
 
-  const jwtToken = sessionStorage.getItem('jwttoken');
+  const jwtToken = sessionStorage.getItem('jwttoken') || '';
   const submit = (e) => {
     e.preventDefault();
     fetch("/api/v1/users/signup", {

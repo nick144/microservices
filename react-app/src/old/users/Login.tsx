@@ -6,18 +6,18 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [message, setMessage] = useState(false);
-  const jwtToken = sessionStorage.getItem('jwttoken');
+  const jwtToken = sessionStorage.getItem('jwttoken') || '';
   let user = sessionStorage.getItem('user');
   if (user && !loggedin) {
     user = JSON.parse(user);
   }
-  const submit = (e) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetch("http://localhost/api/v1/users/login", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "x-access-token": jwtToken
+        'x-access-token': jwtToken
       },
       mode:'cors',
       body: JSON.stringify({
@@ -44,14 +44,14 @@ function Login() {
     setPassword(""); 
   };
 
-  const logout = (e) => {
+  const logout = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     fetch("/api/v1/users/logout", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "x-access-token": jwtToken
+        'x-access-token': jwtToken
       },
       mode:'cors'
     }).then((results) => {
@@ -85,7 +85,7 @@ function Login() {
       {user && (
           <div className="px-4 my-32 max-w-3xl mx-auto space-y-6">
             <h1 className="text-3xl font-semibold">{user.username} Is login</h1>
-            <p><span onClick={logout}>logout</span></p>
+            <p><a onClick={(e) => logout}>logout</a></p>
           </div>
       )}
 

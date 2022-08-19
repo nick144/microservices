@@ -6,7 +6,7 @@ function AddPost() {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("Description");
     const [postOutlet, setPostOutlet] = useOutletContext();
-    const jwtToken = sessionStorage.getItem('jwttoken');
+    const jwtToken = sessionStorage.getItem('jwttoken') || '';
     const isValid = useMemo(() => body.length != 0, [body]);
     
     const submit = (e) => {
@@ -18,7 +18,7 @@ function AddPost() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "x-access-token": jwtToken
+                'x-access-token': jwtToken
             },
             mode:'cors',
             body: JSON.stringify({
@@ -49,7 +49,7 @@ function AddPost() {
                 <div className="">
                     <div className="my-5">
                         <input type="text"
-                            isRequired
+                            // isRequired
                             value={title}
                             onChange={event => setTitle(event.target.value)}
                             placeholder='Username'
@@ -58,7 +58,7 @@ function AddPost() {
                     </div>
                     <div className="">
                         <textarea
-                            validationState={ !isValid ? 'valid' : 'invalid'}
+                            // validationState={ !isValid ? 'valid' : 'invalid'}
                             onChange={event => setBody(event.target.value)}
                             value={body}
                             className={`border ${ (isValid) ? "border-red-400" : "border-grey-400" } block py-2 px-4 w-full rounded focus:outline-none focus:border-teal-500 max-w-3xl`}>

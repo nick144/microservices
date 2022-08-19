@@ -5,12 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './users/Login';
-import Posts from './posts/Posts';
-import AddPost from './posts/AddPost';
+import Posts from './old/posts/Posts';
+import AddPost from './old/posts/AddPost';
 import Signup from './users/Signup';
 import Layout from './layout/Layout';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 root.render(
   <div className='Index'>
     <BrowserRouter>
@@ -30,6 +32,7 @@ root.render(
       </Layout>
     </BrowserRouter>
   </div>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
