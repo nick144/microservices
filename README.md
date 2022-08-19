@@ -1,4 +1,4 @@
-# Dominic Fernandes
+# Test App
 ## _Node Microsevice and React app_
 
     Docker Compose command
