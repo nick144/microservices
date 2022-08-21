@@ -6,14 +6,14 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(verifyToken, postController.getAllPosts)
-    .post(verifyToken, postController.createPost);
+    .get(postController.getAllPosts)
+    .post(postController.createPost);
 
 router
     .route("/:id")
-    .get(verifyToken, postController.getOnePost)
-    .patch(verifyToken, postController.updatePost)
-    .delete(verifyToken, postController.deletePost);
+    .get(postController.getOnePost)
+    .patch(postController.updatePost)
+    .delete(postController.deletePost);
 
 
 module.exports = router;

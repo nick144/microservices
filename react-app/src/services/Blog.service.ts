@@ -4,19 +4,19 @@ import BlogType from "../models/Blog.type";
 
 class BlogSerice {
     getAll() {
-        return http.get<Array<BlogType>>("/post");
+        return http.get<Array<BlogType>>("/posts/");
     }
 
     create(data: BlogType) {
-        return http.post<BlogType>("/post", data);
+        return http.post<BlogType>("/posts/", data);
     }
 
     update(data: BlogType, id: any) {
-        return http.put<any>(`/post/${id}`, data);
+        return http.put<any>(`/posts/${id}`, data);
     }
 
     delete(id: any) {
-        return http.delete<any>(`/post/${id}`);
+        return http.delete<any>(`/posts/${id}`);
     }
 }
 

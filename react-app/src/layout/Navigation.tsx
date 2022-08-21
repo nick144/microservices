@@ -13,7 +13,7 @@ const Navigation = () => {
                     <div className="text-sm lg:flex-grow">
                         <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/">Home</Link>
                         <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/blogs">Blogs</Link>
-                        <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/blogs/new">Add Blog</Link>
+                        <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/blog/new">Add Blog</Link>
                         <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/login">Login</Link>
                         <Link className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white" to="/register">Sign up</Link>
                     </div>

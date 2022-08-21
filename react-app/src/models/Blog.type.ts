@@ -3,4 +3,5 @@ export default interface BlogType {
     title: string,
     description: string,
     published?: boolean,
+    submitted?: boolean
   }
