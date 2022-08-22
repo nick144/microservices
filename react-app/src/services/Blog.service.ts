@@ -1,5 +1,5 @@
 import http from "../http-common";
-import BlogType from "../models/Blog.type";
+import BlogType from "../types/BlogActionType";
 
 
 class BlogSerice {

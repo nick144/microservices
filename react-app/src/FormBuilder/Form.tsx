@@ -5,7 +5,13 @@ import Button from './element/Button';
 
 
 const renderFields = (fields: any, resetValue: Boolean) => {
-        
+    if (!fields) {
+        return (
+            <div>
+                <span className='text-grey-500 px-3 mb-6 md:mb-0'>Loading...</span>
+            </div>
+        );
+    }
     return fields.map( (field: any) => {
         const { name, type } = field;
         switch (type) {

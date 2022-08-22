@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BlogService from "../../services/Blog.service";
-import BlogData from "../../models/Blog.type";
+import BlogData from "../../types/BlogActionType";
 
 
 const Blogs = () => {
