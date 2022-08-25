@@ -7,12 +7,16 @@ class BlogSerice {
         return http.get<Array<BlogType>>("/posts/");
     }
 
+    get(id: any) {
+        return http.get<Array<BlogType>>(`/posts/${id}`);
+    }
+
     create(data: BlogType) {
         return http.post<BlogType>("/posts/", data);
     }
 
     update(data: BlogType, id: any) {
-        return http.put<any>(`/posts/${id}`, data);
+        return http.patch<any>(`/posts/${id}`, data);
     }
 
     delete(id: any) {

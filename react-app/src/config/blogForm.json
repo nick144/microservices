@@ -7,7 +7,8 @@
             "name": "title",
             "validationProps": {
                 "required": "Title is mandatory"
-            }
+            },
+            "value": ""
         },
         {
             "title": "Description",
@@ -15,12 +16,14 @@
             "name": "description",
             "validationProps": {
                 "required": "Description is mandatory"
-            }
+            },
+            "value": ""
         },
         {
             "title": "Submit",
             "type": "button",
-            "name": "submit"
+            "name": "submit",
+            "value": ""
         }
     ]
 }

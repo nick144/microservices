@@ -7,13 +7,13 @@ const router = express.Router();
 router
     .route("/")
     .get(postController.getAllPosts)
-    .post(postController.createPost);
+    .post(verifyToken, postController.createPost);
 
 router
     .route("/:id")
-    .get(postController.getOnePost)
-    .patch(postController.updatePost)
-    .delete(postController.deletePost);
+    .get(verifyToken, postController.getOnePost)
+    .patch(verifyToken, postController.updatePost)
+    .delete(verifyToken, postController.deletePost);
 
 
 module.exports = router;

@@ -1,7 +1,6 @@
 export const INITIAL_STATE= {
     template: {},
     loading: false,
-    posts: [],
     formError: '',
     success: '',
     resetValue: false,
@@ -10,22 +9,18 @@ export const INITIAL_STATE= {
 }
 
 
-const PostReducer = (state: any, action: { type: any, payload?: any }) => {
+const UserReducer = (state: any, action: { type: any, payload: any }) => {
     switch (action.type) {
         case 'INIT':
             const loggedIn = sessionStorage.getItem('jwttoken') || false;
             const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user') || '') : '';
             return {
                 ...state,
-                template: action.payload?.formConfig || {},
-                isLogin: (loggedIn && user) ? true : false,
+                template: action.payload.formConfig,
+                isLogin: (loggedIn && user),
                 user: user
             }
-        case 'FETCH_USER_POST':
-            return {
-                ...state,
-                posts: action.payload.post,
-            }
+        
         case 'FETCH_START':
             return {
                 ...state,
@@ -34,9 +29,10 @@ const PostReducer = (state: any, action: { type: any, payload?: any }) => {
         case 'FETCH_SUCCESS':
             return {
                 ...state,
-                posts: action.payload.post,
                 success: action.payload.success,
-                resetValue: true
+                resetValue: true,
+                isLogin: action.payload.response.auth || false,
+                user: action.payload.response.data.user || {}
             }
         case 'FETCH_ERROR':
             return {
@@ -49,4 +45,4 @@ const PostReducer = (state: any, action: { type: any, payload?: any }) => {
 
 }
 
-export default PostReducer;
+export default UserReducer;

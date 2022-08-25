@@ -1,0 +1,30 @@
+{
+    "title": "Login Form",
+    "fields": [
+        {
+            "title": "Username",
+            "type": "text",
+            "name": "username",
+            "validationProps": {
+                "required": "username is mandatory"
+            }
+        },
+        {
+            "title": "Password",
+            "type": "password",
+            "name": "password",
+            "validationProps": {
+                "required": "You must specify a password",
+                "minLength": {
+                    "value": 8,
+                    "message": "Password must have at least 8 characters"
+                }
+            }
+        },
+        {
+            "title": "Submit",
+            "type": "button",
+            "name": "submit"
+        }
+    ]
+}

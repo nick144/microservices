@@ -8,6 +8,10 @@ import Layout from './layout/Layout';
 import Blogs from './components/blog/blogs.component';
 // import AddPost from './posts/AddPost';
 import AddBlog from './components/blog/add-blog.component';
+import SignUp from './components/user/signup.component';
+import Login from './components/user/Login.component';
+import Logout from './components/user/logout.component';
+import DeleteBlog from './components/blog/delete.component';
 
 // import Signup from './users/Signup';
 
@@ -20,14 +24,14 @@ root.render(
       <Layout>
         <Routes>
           <Route path='/' element={<App />} />
-          {/* <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Signup />} /> */}
+          
+          <Route path='/register' element={<SignUp />} />          
           <Route path='/blogs' element={<Blogs />} />
-          <Route
-              path='/blog/new'
-              element={<AddBlog />}
-              />
-          {/* <Route path='/blog/new' element={<AddPost />} /> */}
+          <Route path='/blog/new' element={<AddBlog />} />
+          <Route path='/blog/:id' element={<AddBlog />} />
+          <Route path='/blog/delete/:id' element={<DeleteBlog />} />            
+          <Route path='/login' element={<Login />} />
+          <Route path='/logout' element={<Logout />} />
         </Routes>
       </Layout>
     </BrowserRouter>

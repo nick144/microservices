@@ -39,7 +39,7 @@ exports.createPost = async (req, res, next) => {
             title: req.body.title,
             description: req.body.description,
             published: true,
-            userId: 0
+            userId: req.session.user.user_id
         });
         res.status(200).json({
             status: 'Success',
