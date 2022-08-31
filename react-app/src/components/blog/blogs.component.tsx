@@ -30,7 +30,7 @@ const Blogs = () => {
 
 
     const postList = (state.posts) ? state.posts.map((post: any) => 
-            <div key={post._id}>
+            <div key={post._id} className="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100 overflow-hidden">
                 <h3 className="text-1xl font-semibold">
                     {post.title}
                     { (state.isLogin && post.userId === state.user.user_id) &&(
@@ -51,8 +51,12 @@ const Blogs = () => {
     
     return (
         <div className="Posts">
-            <div className="px-5 py-5 my-20 max-w-3xl mx-auto space-y-6 border border-teal-400 rounded">
-                <h1 className="text-3xl font-semibold">Blog</h1>
+            <div className="px-5 py-5 my-20 max-w-full mx-auto space-y-6 border border-teal-400 rounded flex flex-row flex-wrap">
+                <div className="w-full py-3">
+                    <h2 className="text-gray-800 text-2xl font-bold">
+                        <span className="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Blog
+                    </h2>
+                </div>
                 { state.posts &&(postList) }
             </div>
             {state.formError && (

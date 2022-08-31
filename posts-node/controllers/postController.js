@@ -2,7 +2,7 @@ const Post = require("../models/Posts")
 
 exports.getAllPosts = async (req, res, next) => {
     try {
-        const posts = await Post.find({published: true});
+        const posts = await Post.find({published: true}).sort({'_id': -1});
         res.status(200).json({
             status: 'Success',
             results: posts.length,
