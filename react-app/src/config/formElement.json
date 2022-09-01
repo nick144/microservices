@@ -1,0 +1,26 @@
+{
+    "title": "Blog Form",
+    "fields": [
+        {
+            "title": "Title",
+            "type": "text",
+            "name": "title",
+            "validationProps": {
+                "required": "Title is mandatory"
+            }
+        },
+        {
+            "title": "Description",
+            "type": "textarea",
+            "name": "description",
+            "validationProps": {
+                "required": "Description is mandatory"
+            }
+        },
+        {
+            "title": "Submit",
+            "type": "button",
+            "name": "submit"
+        }
+    ]
+}

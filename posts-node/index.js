@@ -37,13 +37,11 @@ app.use(cors());
 app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
-    // resave: true,
-    // saveUninitialized: true,
     cookie: {
         secure: false,
         httpOnly: true,
-        resave: false,
-        saveUninitialized: false,
+        // resave: false,
+        // saveUninitialized: false,
         resave: false,
         maxAge: 60*60*24
     }

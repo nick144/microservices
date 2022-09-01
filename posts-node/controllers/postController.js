@@ -2,13 +2,11 @@ const Post = require("../models/Posts")
 
 exports.getAllPosts = async (req, res, next) => {
     try {
-        const posts = await Post.find();
+        const posts = await Post.find({published: true});
         res.status(200).json({
             status: 'Success',
             results: posts.length,
-            data: {
-                posts: posts
-            }
+            data: posts
         })
     } catch (e) {
         console.log(e);
@@ -37,7 +35,12 @@ exports.getOnePost = async (req, res, next) => {
 
 exports.createPost = async (req, res, next) => {
     try {
-        const post = await Post.create(req.body);
+        const post = await Post.create({
+            title: req.body.title,
+            description: req.body.description,
+            published: true,
+            userId: 0
+        });
         res.status(200).json({
             status: 'Success',
             results: post.length,

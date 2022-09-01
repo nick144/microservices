@@ -10,12 +10,12 @@ const PostSchema = new mongoose.Schema({
         require: [true, "Post mush have body"],
     },
     published: {
-        type: String,
-        require: [true, "Post mush have author id"],
+        type: Boolean
+        // require: [true, "Post mush have author id"],
     },
     userId: {
-        type: String,
-        require: [true, "Post mush have author id"],
+        type: Number
+        // require: [true, "Post mush have author id"],
     }
 });
 
