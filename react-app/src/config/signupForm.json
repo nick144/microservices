@@ -1,0 +1,70 @@
+{
+    "title": "Signup Form",
+    "fields": [
+        {
+            "title": "Email",
+            "type": "email",
+            "name": "email",
+            "validationProps": {
+                "required": "Email is mandatory"
+            }
+        },
+        {
+            "title": "Username",
+            "type": "text",
+            "name": "username",
+            "validationProps": {
+                "required": "username is mandatory"
+            }
+        },
+        {
+            "title": "Password",
+            "type": "password",
+            "name": "password",
+            "validationProps": {
+                "required": "You must specify a password",
+                "minLength": {
+                    "value": 8,
+                    "message": "Password must have at least 8 characters"
+                }
+            }
+        },
+        {
+            "title": "Confirm Password",
+            "type": "password",
+            "name": "confirm_password",
+            "validationProps": {
+                "required": "value => value === password.current || The passwords do not match"
+            }
+        },
+        {
+            "title": "First Name",
+            "type": "text",
+            "name": "firstname",
+            "validationProps": {
+                "required": "firstname is mandatory"
+            }
+        },
+        {
+            "title": "Last Name",
+            "type": "text",
+            "name": "lastname",
+            "validationProps": {
+                "required": "lastname is mandatory"
+            }
+        },
+        {
+            "title": "Phone",
+            "type": "tel",
+            "name": "phone",
+            "validationProps": {
+                "required": "lastname is mandatory"
+            }
+        },
+        {
+            "title": "Submit",
+            "type": "button",
+            "name": "submit"
+        }
+    ]
+}

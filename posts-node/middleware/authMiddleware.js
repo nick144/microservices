@@ -21,15 +21,16 @@ const { TOKEN_SECRET } = require("../config/config");
 
 
 const verifyToken = (req, res, next) => {
-    const token =
-      req.body.token || req.query.token || req.headers["x-access-token"];
+    let token =
+      req.body.token || req.query.token || req.headers["authorization"];
   
     if (!token) {
       return res.status(403).json({status: 0, message: 'A token is required for authentication'});
     }
-    console.log(token, TOKEN_SECRET);
+    token = token.split(' ');
+      
     try {
-      const decoded = jwt.verify(token, TOKEN_SECRET);
+      const decoded = jwt.verify(token[1], TOKEN_SECRET);
       req.user = decoded;
       req.session.user = decoded;
     } catch (err) {

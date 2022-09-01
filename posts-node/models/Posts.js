@@ -14,8 +14,8 @@ const PostSchema = new mongoose.Schema({
         // require: [true, "Post mush have author id"],
     },
     userId: {
-        type: Number
-        // require: [true, "Post mush have author id"],
+        type: String,
+        require: [true, "Post mush have author id"],
     }
 });
 

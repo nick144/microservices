@@ -2,7 +2,7 @@ const Post = require("../models/Posts")
 
 exports.getAllPosts = async (req, res, next) => {
     try {
-        const posts = await Post.find({published: true});
+        const posts = await Post.find({published: true}).sort({'_id': -1});
         res.status(200).json({
             status: 'Success',
             results: posts.length,
@@ -39,7 +39,7 @@ exports.createPost = async (req, res, next) => {
             title: req.body.title,
             description: req.body.description,
             published: true,
-            userId: 0
+            userId: req.session.user.user_id
         });
         res.status(200).json({
             status: 'Success',
